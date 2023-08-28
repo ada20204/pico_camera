@@ -10,10 +10,12 @@ set(TINYUSB_FAMILY_PROJECT_NAME_PREFIX "tinyusb_dev_")
 add_subdirectory(${PICO_TINYUSB_PATH}/examples/device tinyusb_device_examples)
 
 aux_source_directory(./main SOURCES)
+aux_source_directory(./main/ov7725 OV7725_SRC)
 
-add_executable(${PROJECT_NAME} ${SOURCES})
+add_executable(${PROJECT_NAME} ${SOURCES} ${OV7725_SRC})
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/main)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/main/ov7725)
 
 # pull in common dependencies
 # pico_enable_stdio_usb(${PROJECT_NAME} 1)
